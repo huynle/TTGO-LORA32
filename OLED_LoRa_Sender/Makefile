@@ -5,8 +5,11 @@
 all:
 	pio -c vim run
 
-compiledb:
-	pio run --target compiledb
+env:
+	# for making the dev environment
+	pio -c vim run -e base --target compiledb
+	rm -f compile_commands.json
+	ln .pio/build/base/compile_commands.json
 
 upload:
 	pio -c vim run --target upload
