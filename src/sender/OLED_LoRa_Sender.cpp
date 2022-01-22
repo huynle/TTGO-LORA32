@@ -34,6 +34,13 @@ unsigned int counter = 0;
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RST);
 
+// optional can be used as the return type of a factory that may fail
+std::optional<std::string> create(bool b) {
+    if (b)
+        return "Godzilla";
+    return {};
+}
+
 void setup() {
   pinMode(OLED_RST, OUTPUT);
   pinMode(2, OUTPUT);
